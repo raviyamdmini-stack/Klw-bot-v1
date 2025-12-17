@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pair KLW Bot</title>
+<style>
+body{background:#020617;color:white;font-family:sans-serif;display:flex;justify-content:center;align-items:center;height:100vh}
+.box{background:#0f172a;padding:25px;border-radius:15px;width:300px;text-align:center}
+input,button{width:100%;padding:10px;margin-top:10px;border-radius:8px;border:none}
+button{background:#22c55e;font-weight:bold}
+pre{margin-top:15px}
+</style>
+</head>
+<body>
+<div class="box">
+<h3>📱 Enter WhatsApp Number</h3>
+<input id="num" placeholder="947XXXXXXXX">
+<button onclick="pair()">GET PAIR CODE</button>
+<pre id="out"></pre>
+</div>
+
+<script>
+async function pair(){
+ const n=document.getElementById("num").value;
+ const r=await fetch("/pair-code?num="+n);
+ document.getElementById("out").innerText=await r.text();
+}
+</script>
+</body>
+</html>
